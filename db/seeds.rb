@@ -3,7 +3,7 @@ User.create(:username => "skittles123", :email => "skittles@aol.com", :password 
 User.create(:username => "becky567", :email => "starz@aol.com", :password => "kittens")
 User.create(:username => "silverstallion", :email => "silver@aol.com", :password => "horses")
 User.create(:username => "someguy", :email => "guy@aol.com", :password => "badpassword")
-User.create(:username => "crazycatlady", :email => "iluvcatz@hotmail..com", :password => "catz123")
+User.create(:username => "crazycatlady", :email => "iluvcatz@hotmail.com", :password => "catz123")
 
 # Posts
 Post.create(content: "Content of this post - Post 1 user id 1.", user_id: 1)

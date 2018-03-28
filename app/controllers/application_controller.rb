@@ -11,6 +11,21 @@ class ApplicationController < Sinatra::Base
       logged_in? ? (redirect '/posts') : (erb :index)
    end
 
+   post '/login' do
+      @user = User.find_by(username: params[:username])
+      if @user && @user.authenticate(params[:password])
+         session[:user_id] = @user.id
+         redirect '/posts'
+      else
+         redirect '/'
+      end
+   end
+
+   get '/logout' do
+      session.clear
+      redirect '/'
+   end
+
    helpers do
       def logged_in?
          !!session[:user_id]
