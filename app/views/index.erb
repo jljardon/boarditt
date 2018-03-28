@@ -6,7 +6,43 @@
    </head>
    <body>
       <div class="container">
-        <h1>Welcome to Boarditt!</h1>
+         <h1>Welcome to Boarditt!</h1>
+         <p>Boarditt is platform to share content with strangers!</p>
+
+         <div>
+            <h3>Login</h3>
+            <form action="/login" method="post">
+               <table>
+                  <tr>
+                     <td>
+                        Username:
+                     </td>
+                     <td><input type="text" name="username" placeholder="your username"></td>
+
+                  </tr>
+
+                  <tr>
+                     <td>
+                        Password:
+                     </td>
+                     <td><input type="password" name="password" placeholder="your password"></td>
+
+                  </tr>
+               </table>
+
+               <input type="submit" name="submit" value="Login!">
+
+            </form>
+         </div>
+         <br>
+         <hr>
+         <br>
+         <div>
+            <h3>Don't have an account?</h3>
+            <p>Sing up
+               <a href="/signup">here!</a>
+            </p>
+         </div>
       </div>
 
    </body>
