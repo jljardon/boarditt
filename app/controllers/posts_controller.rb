@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  # use Rack::Flash
   get '/posts' do
     logged_in? ? (erb :'posts/posts') : (redirect '/')
   end
@@ -18,6 +17,12 @@ class PostsController < ApplicationController
       @post.save
       redirect "/posts/#{@post.id}/#{@post.slug}"
     end
+  end
+
+  delete '/posts/:id/delete' do
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect '/posts'
   end
 
   get '/posts/:id/:slug' do

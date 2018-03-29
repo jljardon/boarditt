@@ -4,6 +4,31 @@
   <strong>
     <%=@post.content%></strong>
 </p>
+<table>
+  <td>
+    <tr>
+      <form action="/posts/<%=@post.id%>/delete" method="get">
+        <input type="submit" value="Comment"/>
+      </form>
+    </tr>&nbsp;
+
+    <%if @post.user.id == current_user.id%>
+      <tr>
+        <form action="/posts/<%=@post.id%>/delete" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete"/>
+        </form>
+      </tr>
+      &nbsp;
+      <tr>
+        <form action="/posts/<%=@post.id%>/edit" method="get">
+          <input type="submit" value="Edit"/>
+        </form>
+      </tr>
+    <%end%>
+  </td>
+</table>
+
 <hr>
 <%@post.comments.each do |comment|%>
   <p><%=comment.content%></p>
