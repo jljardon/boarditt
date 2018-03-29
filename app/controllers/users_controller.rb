@@ -19,4 +19,9 @@ class UsersController < ApplicationController
       redirect '/posts'
     end
   end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    logged_in? ? (erb :'users/show_user') : (redirect '/')
+  end
 end

@@ -2,9 +2,9 @@
 <%Post.all.each do |post|%>
   <ul>
     <li>
-      <a href="/posts/<%=post.id%>"><%=post.title%></a>
+      <a href="/posts/<%=post.id%>/<%=post.slug%>"><%=post.title%></a>
       -
-      <a href="/user/<%post.user.id%>"><%=post.user.username%></a>
+      <a href="/users/<%=post.user.slug%>"><%=post.user.username%></a>
     </li>
   </ul>
 <%end%>
