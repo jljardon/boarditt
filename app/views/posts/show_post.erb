@@ -1,0 +1,16 @@
+<h2><%=@post.title%></h2>
+
+<p>
+  <strong>
+    <%=@post.content%></strong>
+</p>
+<hr>
+<%@post.comments.each do |comment|%>
+  <p><%=comment.content%></p>
+  <p>By user:
+    <%=comment.user.username%></p>
+  <hr>
+<%end%>
+<footer>Return to
+  <a href="/posts">posts</a>
+</footer>

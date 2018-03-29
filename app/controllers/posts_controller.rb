@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
 
    get '/posts' do
-      erb :'posts/posts'
+       logged_in? ? (erb :'posts/posts'): (redirect '/')
+   end
+
+   get '/posts/:id' do
+     @post = Post.find_by(id: params[:id])
+      logged_in? ? (erb :'posts/show_post'): (redirect '/')
    end
 end

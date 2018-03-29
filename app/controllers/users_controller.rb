@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       flash[:message] = 'Username, password and email fields cannot be empty!'
       redirect '/users/signup'
     elsif User.find_by(email: params[:email])
-      flash[:message] = 'Email already exists in our records. Please <a href="/">login</a> or user another email.'
+      flash[:message] = 'That email already exists in our records. Please <a href="/">login</a> or user another email.'
       redirect '/users/signup'
     elsif User.find_by(username: params[:username])
       flash[:message] = 'Username already registered, please choose another one.'
