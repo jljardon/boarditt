@@ -1,0 +1,24 @@
+<h3>Please remember you are required to fill all the fields</h3>
+
+<form action="/posts/new" method="post">
+
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td>
+        <input type="text" name="title" placeholder="Title">
+      </td>
+    </tr>
+    <tr>
+      <td>Content:</td>
+      <td>
+        <textarea name="content" rows="8" cols="80" placeholder="Write here..."></textarea>
+      </td>
+    </tr>
+
+  </table>
+  <input type="submit" name="submit" value="Post!">
+  <% if flash.has?(:message) %>
+    <h4><%= flash[:message] %></h4>
+  <% end %>
+</form>

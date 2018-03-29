@@ -1,6 +1,6 @@
-<h1>User -
+<h2>User -
   <%=@user.username%>
-</h1>
+</h2>
 
 <h3>Posts</h3>
 <%@user.posts.each do |post|%>
@@ -8,18 +8,21 @@
     <li>
       <a href="/posts/<%=post.id%>/<%=post.slug%>">
         <%=post.title%></a>
-
     </li>
   </ul>
 <%end%>
-
+<hr>
 <h3>Comments</h3>
-<%@user.comments.each do |comment|%>
-  <ul>
-    <li>
-      <%=comment.content%>
-      in
-      <a href="/posts/<%=comment.post.id%>/<%=comment.post.slug%>"><%=comment.post.title%></a>
-    </li>
-  </ul>
-<%end%>
+<table>
+  <%@user.comments.each do |comment|%>
+
+    <tr>
+      <td>
+        <a href="/posts/<%=comment.post.id%>/<%=comment.post.slug%>"><%=comment.post.title%></a>
+      </td>
+      <td>
+        -
+        <%=comment.content%></td>
+    </tr>
+  <%end%>
+</table>

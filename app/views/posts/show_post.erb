@@ -8,7 +8,8 @@
 <%@post.comments.each do |comment|%>
   <p><%=comment.content%></p>
   <p>By user:
-    <%=comment.user.username%></p>
+    <a href="/users/<%=comment.user.slug%>"><%=comment.user.username%></a>
+  </p>
   <hr>
 <%end%>
 <footer>
