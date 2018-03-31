@@ -1,5 +1,5 @@
 require './config/environment'
-   
+
 
 class ApplicationController < Sinatra::Base
    configure do
@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
 
       def current_user
          User.find(session[:user_id])
+         rescue ActiveRecord::RecordNotFound
       end
    end
 end

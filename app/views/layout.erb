@@ -1,20 +1,27 @@
 <!doctype html>
 <html>
-   <head>
-      <title>Boarditt</title>
-   </head>
-   <body>
-      <div align="right">
-         <h4>
-            <a href="/logout">Log Out</a>
-         </h4>
-      </div>
-      <br>
+  <head>
+    <title>Boarditt</title>
+  </head>
+  <body>
+    <div align="right">
+      <h4>
+        <a href="/logout">Log Out</a>
+      </h4>
+    </div>
+    <br>
 
-      <div class="container">
+    <div class="container">
 
-         <%= yield %>
-      </div>
+      <%= yield %>
+    </div>
+    <footer>
+      <%if !current_user.nil?%>
+        <h4>Return to
+          <a href="/posts">all posts</a>
+        </h4>
+      <%end%>
+    </footer>
 
-   </body>
+  </body>
 </html>

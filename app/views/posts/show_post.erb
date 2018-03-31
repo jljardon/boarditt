@@ -35,10 +35,11 @@
   <p>By user:
     <a href="/users/<%=comment.user.slug%>"><%=comment.user.username%></a>
   </p>
+  <%if current_user.id == comment.user.id %>
+  <form action="/comments/<%=comment.id%>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete comment"/>
+  </form>
+  <%end%>
   <hr>
 <%end%>
-<footer>
-  <h3>Return to
-    <a href="/posts">all posts</a>
-  </h3>
-</footer>

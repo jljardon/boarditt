@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  use Rack::Flash
   get '/comments/new/:post_id' do
     @post_id = params[:post_id]
     erb :'comments/new_comment'
@@ -10,4 +11,13 @@ class CommentsController < ApplicationController
     redirect "/posts/#{@post.id}/#{@post.slug}"
   end
 
+  delete '/comments/:id/delete' do
+    @comment = Comment.find_by(id: params[:id])
+    @user = current_user
+    if @comment.user.id == @user.id
+      @comment.destroy
+      flash[:message] = 'Your comment was deleted.'
+    end
+    erb :'users/show_user'
+  end
 end

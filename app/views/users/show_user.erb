@@ -1,7 +1,13 @@
 <h2>User -
   <%=@user.username%>
 </h2>
-
+<hr>
+<div>
+  <h3>
+    <a href="/posts/new">Create new post</a>
+  </h3>
+</div>
+<hr>
 <h3>Posts</h3>
 <%@user.posts.each do |post|%>
   <ul>
@@ -18,6 +24,13 @@
 
     <tr>
       <td>
+        <form action="/comments/<%=comment.id%>/delete" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete comment"/>
+        </form>
+      </td>
+
+      <td>
         <a href="/posts/<%=comment.post.id%>/<%=comment.post.slug%>"><%=comment.post.title%></a>
       </td>
       <td>
@@ -26,3 +39,6 @@
     </tr>
   <%end%>
 </table>
+<% if flash.has?(:message) %>
+  <h4><%= flash[:message] %></h4>
+<% end %>
