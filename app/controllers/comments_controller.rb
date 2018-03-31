@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   use Rack::Flash
   get '/comments/new/:post_id' do
     @post_id = params[:post_id]
-    erb :'comments/new_comment'
+    logged_in? ? (erb :'comments/new_comment') : (redirect '/')
   end
 
   post '/comments/new/:post_id' do
@@ -17,6 +17,22 @@ class CommentsController < ApplicationController
     if @comment.user.id == @user.id
       @comment.destroy
       flash[:message] = 'Your comment was deleted.'
+    end
+    erb :'users/show_user'
+  end
+
+  get '/comments/:id/edit' do
+    @comment = Comment.find_by(id: params[:id])
+    logged_in? ? (erb :'comments/edit_comment') : (redirect '/')
+  end
+
+  patch '/comments/:id/edit' do
+    @comment = Comment.find_by(id: params[:id])
+    @user = current_user
+    if @comment.user.id == @user.id
+      @comment.content = params[:content]
+      @comment.save
+      flash[:message] = 'Your comment was edited successfully.'
     end
     erb :'users/show_user'
   end

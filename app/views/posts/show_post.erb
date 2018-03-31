@@ -36,10 +36,20 @@
     <a href="/users/<%=comment.user.slug%>"><%=comment.user.username%></a>
   </p>
   <%if current_user.id == comment.user.id %>
-  <form action="/comments/<%=comment.id%>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete comment"/>
-  </form>
+    <table>
+      <td>
+        <form action="/comments/<%=comment.id%>/delete" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete comment"/>
+        </form>
+      </td>
+      <td>
+        <form action="/comments/<%=comment.id%>/edit" method="get">
+          <input type="submit" value="  Edit comment  "/>
+        </form>
+      </td>
+    </table>
+
   <%end%>
   <hr>
 <%end%>

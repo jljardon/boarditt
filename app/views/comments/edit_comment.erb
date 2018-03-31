@@ -1,0 +1,17 @@
+<h2>Edit your comment</h2>
+
+<form action="/comments/<%=@comment.id%>/edit" method="post">
+  <label>Content:</label>
+  <table>
+    <tr>
+      <td>
+        <textarea name="content" rows="8" cols="80"><%=@comment.content%></textarea>
+        <br>
+        <sub>Remember to be kind to other users.</sub>
+      </td>
+    </tr>
+
+  </table>
+  <input type="hidden" name="_method" value="patch">
+  <input type="submit" name="submit" value="Post!">
+</form>

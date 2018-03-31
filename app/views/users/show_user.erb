@@ -19,23 +19,27 @@
 <%end%>
 <hr>
 <h3>Comments</h3>
-<table>
+<table cellpadding="5">
   <%@user.comments.each do |comment|%>
 
     <tr>
-      <td>
-        <form action="/comments/<%=comment.id%>/delete" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete comment"/>
+      <td width="9%">
+        <form class="" action="/posts/<%=comment.post.id%>/<%=comment.post.slug%>" method="get">
+          <input type="submit" name="go" value="     Go to post     ">
         </form>
+        <%if comment.user.id == current_user.id%>
+          <form action="/comments/<%=comment.id%>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete comment"/>
+          </form>
+          <form action="/comments/<%=comment.id%>/edit" method="get">
+            <input type="submit" value="  Edit comment  "/>
+          </form>
+        <%end%>
       </td>
-
       <td>
-        <a href="/posts/<%=comment.post.id%>/<%=comment.post.slug%>"><%=comment.post.title%></a>
+        <%=comment.content%>
       </td>
-      <td>
-        -
-        <%=comment.content%></td>
     </tr>
   <%end%>
 </table>
