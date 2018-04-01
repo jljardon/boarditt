@@ -8,12 +8,14 @@ The application can display content shared by the users; said users can manage t
 
 Download repository, update dependecies with:
 
-```bundle install
+``` 
+bundle install
 ```
 
 In the base directory run with:
 
-```bundle exec rackup
+```
+bundle exec rackup
 ```
 
 ## Contributing
