@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20180328031414) do
     t.string "email"
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", id: false, force: :cascade do |t|
     t.boolean "like"
     t.integer "user_id"
     t.integer "post_id"
+    t.index ["user_id", "post_id"], name: "index_votes_on_user_id_and_post_id", unique: true
   end
 
 end

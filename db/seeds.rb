@@ -23,14 +23,14 @@ Post.create(title: "Title of the post.",content: "I <3 my cats! - Post 12u ser i
 
 # Votes
 Vote.create(like: true, user_id: 1, post_id: 1)
-Vote.create(like: true, user_id: 2, post_id: 1)
+Vote.create(like: false, user_id: 2, post_id: 1)
 Vote.create(like: true, user_id: 5, post_id: 1)
 
-Vote.create(like: true, user_id: 1, post_id: 3)
-Vote.create(like: true, user_id: 2, post_id: 3)
+Vote.create(like: false, user_id: 1, post_id: 3)
+Vote.create(like: false, user_id: 2, post_id: 3)
 Vote.create(like: true, user_id: 5, post_id: 3)
 
-Vote.create(like: true, user_id: 4, post_id: 2)
+Vote.create(like: false, user_id: 4, post_id: 2)
 Vote.create(like: true, user_id: 5, post_id: 3)
 Vote.create(like: true, user_id: 3, post_id: 3)
 

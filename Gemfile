@@ -13,3 +13,4 @@ gem 'bcrypt'
 gem "tux"
 gem 'rack_session_access'
 gem 'rack-flash3'
+gem 'composite_primary_keys', '~> 10.0.0'

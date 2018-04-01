@@ -47,6 +47,7 @@ class PostsController < ApplicationController
 
   get '/posts/:id/:slug' do
     @post = Post.find_by(id: params[:id])
+    @vote = @post.votes.find_by(user_id: current_user.id,  post_id: @post.id)
     logged_in? ? (erb :'posts/show_post') : (redirect '/')
   end
 end
