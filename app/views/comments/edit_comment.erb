@@ -15,3 +15,6 @@
   <input type="hidden" name="_method" value="patch">
   <input type="submit" name="submit" value="Post!">
 </form>
+<% if flash.has?(:message) %>
+  <h4><%= flash[:message] %></h4>
+<% end %>

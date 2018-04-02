@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  # use Rack::Flash
   get '/posts' do
     logged_in? ? (erb :'posts/posts') : (redirect '/')
   end
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
   post '/posts/new' do
     if params[:title].empty? || params[:content].empty?
       flash[:message] = 'Title and content fields cannot be empty!'
-      erb :'posts/new_post'
+      redirect '/posts/new'
     else
       @post = Post.create(title: params[:title], content: params[:content])
       @post.user = current_user
@@ -40,14 +41,16 @@ class PostsController < ApplicationController
       @post.title = params[:title]
       @post.content = params[:content]
       @post.save
+      redirect "/posts/#{@post.id}/#{@post.slug}"
+    else
+      flash[:message] = 'Title and content fields cannot be empty!'
+      redirect "/posts/#{@post.id}/edit"
     end
-
-    redirect "/posts/#{@post.id}/#{@post.slug}"
   end
 
   get '/posts/:id/:slug' do
     @post = Post.find_by(id: params[:id])
-    @vote = @post.votes.find_by(user_id: current_user.id,  post_id: @post.id)
+    @vote = @post.votes.find_by(user_id: current_user.id, post_id: @post.id)
     logged_in? ? (erb :'posts/show_post') : (redirect '/')
   end
 end

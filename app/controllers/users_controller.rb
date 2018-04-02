@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  use Rack::Flash
+  # use Rack::Flash
   get '/users/signup' do
     logged_in? ? (redirect '/posts') : (erb :'users/create_user')
   end

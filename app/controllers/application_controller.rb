@@ -1,7 +1,7 @@
 require './config/environment'
 
-
 class ApplicationController < Sinatra::Base
+  use Rack::Flash
    configure do
       set :views, 'app/views'
       enable :sessions
@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
          session[:user_id] = @user.id
          redirect '/posts'
       else
+        flash[:message] = 'Please fill out the fields accordingly or create a new account.'
          redirect '/'
       end
    end

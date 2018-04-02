@@ -6,3 +6,6 @@
   <br>
   <input type="submit" name="submit" value="Comment!">
 </form>
+<% if flash.has?(:message) %>
+  <h4><%= flash[:message] %></h4>
+<% end %>
