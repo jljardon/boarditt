@@ -8,7 +8,6 @@ class VotesController < ApplicationController
     else
       @vote.update!(like: params[:vote])
     end
-    # binding.pry
     redirect "/posts/#{@post.id}/#{@post.slug}"
   end
 end

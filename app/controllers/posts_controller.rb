@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   delete '/posts/:id/delete' do
     @post = Post.find_by(id: params[:id])
-    if @post.user.id = current_user.id
+    if @post.user.id == current_user.id
       @post.destroy
       redirect '/posts'
     else
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   patch '/posts/:id/edit' do
     @post = Post.find_by(id: params[:id])
-    if @post.user.id = current_user.id && !params[:title].empty? || !params[:content].empty?
+    if @post.user.id == current_user.id && !params[:title].empty? && !params[:content].empty?
       @post.title = params[:title]
       @post.content = params[:content]
       @post.save
