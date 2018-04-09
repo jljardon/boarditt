@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  # use Rack::Flash
   get '/posts' do
     logged_in? ? (erb :'posts/posts') : (redirect '/')
   end
@@ -36,17 +35,21 @@ class PostsController < ApplicationController
   end
 
   patch '/posts/:id/edit' do
+     # raise params.inspect
     @post = Post.find_by(id: params[:id])
-    if @post.user.id == current_user.id && !params[:title].empty? && !params[:content].empty?
-      @post.title = params[:title]
-      @post.content = params[:content]
-      @post.save
+    if @post.user.id == current_user.id && !params[:post]["title"].empty? && !params[:post]["content"].empty?
+      @post.update(params[:post])
       redirect "/posts/#{@post.id}/#{@post.slug}"
     else
       flash[:message] = 'Title and content fields cannot be empty!'
       redirect "/posts/#{@post.id}/edit"
     end
   end
+
+  # params => {post : {title: "This is a title", content: "this is content"}, method: "post", value: "submit"}
+
+  # The nested params hash looks like this :
+  # {"post"=>{"title"=>"post for test - new", "content"=>"new new new post"}, "_method"=>"patch", "submit"=>"Post!", "id"=>"18"}
 
   get '/posts/:id/:slug' do
     @post = Post.find_by(id: params[:id])

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  # use Rack::Flash
   get '/comments/new/:post_id' do
     @post_id = params[:post_id]
     logged_in? ? (erb :'comments/new_comment') : (redirect '/')
