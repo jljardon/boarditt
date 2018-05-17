@@ -8,11 +8,7 @@ The application can display content shared by the users; said users can manage t
 
 Download repository, update dependecies with:
 
-<<<<<<< HEAD
 ```
-=======
-``` 
->>>>>>> 279564867f537329f4aab6148d42e779b8023bd0
 bundle install
 ```
 
